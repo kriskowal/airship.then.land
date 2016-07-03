@@ -13,6 +13,7 @@ scope.animator = new Animator();
 var style = document.getElementById('style');
 
 var heavens = new Heavens(null, scope);
+heavens.month = 0.5;
 heavens.setSheet(style.sheet);
 var doc = new Document(document.body, redraw);
 var engine = new Engine({
@@ -24,6 +25,8 @@ var engine = new Engine({
 });
 
 engine.end = function end() {
+    heavens.day = 0;
+    heavens.day$ = 0;
     return this.goto('start');
 };
 
@@ -34,7 +37,6 @@ function redraw() {
     var hour = engine.top.get('time') / 2;
     var day = (hour + 0.5) / 14;
     heavens.day = day;
-    heavens.month = 0.5;
 }
 redraw();
 

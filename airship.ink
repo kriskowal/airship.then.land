@@ -87,7 +87,7 @@ In bold letters, the hull is paintèd “{~A|D|M}{$1~1000+1}”.
       {=0 manifold.vent}
   - {!manifold.vent}
     + You l[L]oosen the manifold vent sheet, allowing bouyant gasses to escape.
-      {=0 manifold.vent}
+      {=1 manifold.vent}
   + “Steady as he goes].”[,” you say.
     {->tick} {?conclusion|<-}
   + You t[T]are the altimeter to the ambient barometric pressure.
@@ -301,12 +301,16 @@ In bold letters, the hull is paintèd “{~A|D|M}{$1~1000+1}”.
   {=0          boiler.fire}
   {=30000      tank.helium}
   {=10000      manifold.volume}
+  {=0          manifold.vent}
+  {=0          manifold.helium}
   {=5          ballast.starboard}
   {=5          ballast.port}
   {=50+10~10   barometric.pressure}
   {=50+10~10   altimeter.tare}
   {=0          altitude}
-  {=0          manifold.helium}
+  {=0          nozzle}
+  {=0          plank}
+  {=0          throttle}
   {->tick}
   <-
 
@@ -378,7 +382,7 @@ In bold letters, the hull is paintèd “{~A|D|M}{$1~1000+1}”.
   {/21 manifold.helium}
 
   {=
-    (manifold.helium) -
+    manifold.helium -
     (ballast.starboard * 50) -
     (ballast.port * 50) -
     bolier.water -
@@ -466,7 +470,7 @@ In bold letters, the hull is paintèd “{~A|D|M}{$1~1000+1}”.
     {? (boiler.heat > 1000) ^ ((boiler.water + boiler.steam) < 100)
     | 
       {=1 boiler.cracked}
-      {? boiler.steam > 100
+      {? boiler.steam > 50
       | The boiler explodes as steam vents through numerous cracks in its
         heat-brittled shell.
         {>40 altitude
@@ -477,6 +481,13 @@ In bold letters, the hull is paintèd “{~A|D|M}{$1~1000+1}”.
         | You are fortunate to escape the cataclysm with your life.
         }
       | The boiler rings like a bell and a crack appears along its side.
+        + You c[C]ry, “Alas!”
+        >
+        {=0 boiler.pressure}
+        {=0 boiler.heat}
+        {=0 boiler.water}
+        {=0 boiler.fire}
+        {=0 boiler.steam}
       }
       ---
     }
