@@ -290,17 +290,23 @@ In bold letters, the hull is paintèd “{~A|D|M}{$1~1000+1}”.
   <-
 
 = init
+  {=0          time}
   {=1000       wood}
   {=1000       reservoir.water}
   {=100        boiler.capacity.wood}
   {=100        boiler.capacity.water}
   {=120        boiler.volume}
+  {=0          boiler.water}
+  {=0          boiler.heat}
+  {=0          boiler.fire}
   {=30000      tank.helium}
   {=10000      manifold.volume}
   {=5          ballast.starboard}
   {=5          ballast.port}
   {=50+10~10   barometric.pressure}
   {=50+10~10   altimeter.tare}
+  {=0          altitude}
+  {=0          manifold.helium}
   {->tick}
   <-
 
@@ -372,7 +378,7 @@ In bold letters, the hull is paintèd “{~A|D|M}{$1~1000+1}”.
   {/21 manifold.helium}
 
   {=
-    (manifold.helium / 2) -
+    (manifold.helium) -
     (ballast.starboard * 50) -
     (ballast.port * 50) -
     bolier.water -
