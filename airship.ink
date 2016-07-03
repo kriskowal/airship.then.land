@@ -87,7 +87,7 @@ In bold letters, the hull is paintèd “{~A|D|M}{$1~1000+1}”.
   - {!manifold.vent}
     + You l[L]oosen the manifold vent sheet, allowing bouyant gasses to escape.
       {=0 manifold.vent}
-  + “Steady as she goes].”[,” you say.
+  + “Steady as he goes].”[,” you say.
     {->tick} {?conclusion|<-}
   + You t[T]are the altimeter to the ambient barometric pressure.
     {=barometric.pressure altimeter.tare}
@@ -142,7 +142,7 @@ In bold letters, the hull is paintèd “{~A|D|M}{$1~1000+1}”.
       {-throttle}
     + You p[P]ull the throttle fully closed.
       {=0 throttle}
-  + “Steady as she goes].”[,” you say.
+  + “Steady as he goes].”[,” you say.
     {->tick} {?conclusion|<-}
   + You i[I]nspect the boiler gauges.
     {->boiler.gauges} ->helm.options
