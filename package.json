@@ -1,11 +1,11 @@
 {
-  "name": "journey.aelf.land",
+  "name": "airship.aelf.land",
   "version": "0.0.0",
-  "description": "A journey through Aelfland",
+  "description": "An airship in Aelfland",
   "main": "index.js",
   "scripts": {
     "test": "false",
-    "build": "inkblot journey.ink -j > journey.json",
+    "build": "inkblot airship.ink -j > airship.json",
     "bundle": "bundle index.js > bundle.js"
   },
   "translators": {
@@ -13,17 +13,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kriskowal/journey.aelf.land.git"
+    "url": "git+https://github.com/kriskowal/airship.aelf.land.git"
   },
   "author": "Kris Kowal <kris@cixar.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/kriskowal/journey.aelf.land/issues"
+    "url": "https://github.com/kriskowal/airship.aelf.land/issues"
   },
-  "homepage": "https://github.com/kriskowal/journey.aelf.land#readme",
+  "homepage": "https://github.com/kriskowal/airship.aelf.land#readme",
   "dependencies": {
     "blick": "^1.1.0",
-    "inkblot": "^2.2.0",
+    "inkblot": "^3.0.1",
     "ndim": "^1.5.1",
     "system": "^1.0.6"
   }
