@@ -261,7 +261,7 @@ In bold letters, the hull is paintèd “{~A|D|M}{$1~1000+1}”.
   {>90 boiler.water
   | the meniscus right up to the top|
     {>10 boiler.water
-    | the meniscus in the window around {$boiler.water/10} gallons|
+    | the meniscus in the window around {$boiler.water} gallons|
       nothing}
   }.
   The temperature gauge reads {$boiler.temperature}.
