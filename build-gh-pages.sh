@@ -10,7 +10,7 @@ function gentree() {
     echo "100644 blob $(git hash-object -w <(bundle index.js))"$'\t'"bundle.js"
     echo "100644 blob $(git hash-object -w index.css)"$'\t'"index.css"
     echo "100644 blob $(git hash-object -w bundle.html)"$'\t'"index.html"
-    echo "100644 blob $(git hash-object -w <(echo airship.aelf.land))"$'\t'"CNAME"
+    echo "100644 blob $(git hash-object -w <(echo airship.then.land))"$'\t'"CNAME"
 }
 
 OVERLAY=$(gentree | git mktree)

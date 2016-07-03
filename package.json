@@ -1,7 +1,7 @@
 {
-  "name": "airship.aelf.land",
+  "name": "airship.then.land",
   "version": "0.0.0",
-  "description": "An airship in Aelfland",
+  "description": "Fly an Airship Then Land",
   "main": "index.js",
   "scripts": {
     "test": "false",
@@ -13,14 +13,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kriskowal/airship.aelf.land.git"
+    "url": "git+https://github.com/kriskowal/airship.then.land.git"
   },
   "author": "Kris Kowal <kris@cixar.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/kriskowal/airship.aelf.land/issues"
+    "url": "https://github.com/kriskowal/airship.then.land/issues"
   },
-  "homepage": "https://github.com/kriskowal/airship.aelf.land#readme",
+  "homepage": "https://github.com/kriskowal/airship.then.land#readme",
   "dependencies": {
     "blick": "^1.1.0",
     "inkblot": "^3.0.1",
