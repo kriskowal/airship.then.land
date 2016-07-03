@@ -1,7 +1,8 @@
 'use strict';
 var Animator = require('blick');;
 var Engine = require('inkblot/engine');
-var Document = require('./document');
+var LocalStorage = require('inkblot/localstorage');
+var Document = require('inkblot/document');
 var story = require('./airship.json');
 var Heavens = require('./heavens');
 
@@ -16,9 +17,15 @@ heavens.setSheet(style.sheet);
 var doc = new Document(document.body, redraw);
 var engine = new Engine({
     story: story, 
+    start: localStorage.getItem('start'),
     render: doc, 
-    dialog: doc
+    dialog: doc,
+    storage: new LocalStorage(localStorage)
 });
+
+engine.end = function end() {
+    return this.goto('start');
+};
 
 doc.clear();
 engine.continue();

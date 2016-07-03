@@ -23,7 +23,7 @@
   "homepage": "https://github.com/kriskowal/airship.then.land#readme",
   "dependencies": {
     "blick": "^1.1.0",
-    "inkblot": "^3.0.1",
+    "inkblot": "^3.1.0",
     "ndim": "^1.5.1",
     "system": "^1.0.6"
   }
