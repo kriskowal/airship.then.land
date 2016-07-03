@@ -58,6 +58,7 @@ In bold letters, the hull is paintèd “{~A|D|M}{$1~1000+1}”.
   Unlike the common lateral anemometer which you can view over the helm, the
   vertical anemometer is a propellor rotating about a vertical axis, indicating
   the speed of altitude change relative to the surrounding air.
+  The anemometer is mounted atop the drakeshead like a propellor beanie.
   ---
   = manifold.options
   The altimeter reads {$altimeter}.
@@ -126,7 +127,7 @@ In bold letters, the hull is paintèd “{~A|D|M}{$1~1000+1}”.
   | The propellor is idle.
   }
   {?anemometer.lateral
-  | The anemometer spins{$anemometer.lateral| languidly|| forcefully| wildly}.
+  | The anemometer spins{$anemometer.lateral|| languidly|| forcefully| wildly}.
   | The anemometer does not stir.
   }
   # TODO pennant direction
@@ -227,7 +228,7 @@ In bold letters, the hull is paintèd “{~A|D|M}{$1~1000+1}”.
         - {!boiler.wood}
           Naught but cold ash fills the boiler’s fire box.
           - {?wood}
-            + You p[P]lace wood to the fire box.
+            + You p[P]lace wood in the fire box.
               {->boiler.wood}
               The engineer’s match, an oiled length of rope with a burning wick,
               smoulders in a hasp.
@@ -257,9 +258,9 @@ In bold letters, the hull is paintèd “{~A|D|M}{$1~1000+1}”.
 
 = boiler.gauges
   The boiler’s water level gauge shows
-  {>900 boiler.water
+  {>90 boiler.water
   | the meniscus right up to the top|
-    {>100 boiler.water
+    {>10 boiler.water
     | the meniscus in the window around {$boiler.water/10} gallons|
       nothing}
   }.
@@ -292,8 +293,8 @@ In bold letters, the hull is paintèd “{~A|D|M}{$1~1000+1}”.
   {=1000       wood}
   {=1000       reservoir.water}
   {=100        boiler.capacity.wood}
-  {=1000       boiler.capacity.water}
-  {=1200       boiler.volume}
+  {=100        boiler.capacity.water}
+  {=120        boiler.volume}
   {=30000      tank.helium}
   {=10000      manifold.volume}
   {=5          ballast.starboard}
@@ -363,15 +364,15 @@ In bold letters, the hull is paintèd “{~A|D|M}{$1~1000+1}”.
   }
 
   {?manifold.vent |
-    {*5 manifold.helium}
-    {/6 manifold.helium}
+    {*3 manifold.helium}
+    {/4 manifold.helium}
   }
 
   {*20 manifold.helium}
   {/21 manifold.helium}
 
   {=
-    (manifold.helium * 2) -
+    (manifold.helium / 10) -
     (ballast.starboard * 50) -
     (ballast.port * 50) -
     bolier.water -
@@ -401,8 +402,8 @@ In bold letters, the hull is paintèd “{~A|D|M}{$1~1000+1}”.
     {= altitude.next - altitude altitude.change }
   }
 
-  {? (altitude.next > 0) ^ (altitude < 0)
-  | The deck lurches upward and the ground falls away beneat the airship.
+  {? (altitude.next > 0) ^ (altitude == 0)
+  | The deck lurches upward and the ground falls away beneath the airship.
   }
 
   {>87 altitude.change | {=87 altitude.change}}
@@ -480,24 +481,25 @@ In bold letters, the hull is paintèd “{~A|D|M}{$1~1000+1}”.
     }
 
     # produce drive speed
-    {= engine.pressure drive.speed.target }
+    {= engine.pressure*5 drive.speed.target }
     # asymptotically approach target drive speed
     {= (drive.speed * 4 + drive.speed.target) / 5 drive.speed}
     # consume steam
-    {-drive.speed boiler.steam}
-    {-drive.speed boiler.heat}
+    {-drive.speed/10 boiler.steam}
+    {-drive.speed/10 boiler.heat}
     {<0 boiler.steam | {=0 boiler.steam}}
     {<0 boiler.heat | {=0 boiler.heat}}
-
-    {= speed / 10 anemometer.lateral}
 
     # produce craft speed
     # nominal drag
     {?altitude |
       {*10 speed} {/11 speed}
-      # asymptotically approach drive speed
-      {= (speed * 3 + drive.speed) / 4 speed}
+      # asymptotically approach drive speed divided by vessel weight
+      {= boiler.water + reservoir.water + wood + ballast.starboard + ballast.port weight}
+      {= (speed * 3 + drive.speed * 100 / weight) / 4 speed}
       {+speed position}
     }
+
+    {= speed anemometer.lateral}
 
   }
