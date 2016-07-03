@@ -97,7 +97,7 @@ In bold letters, the hull is paintèd “{~A|D|M}{$1~1000+1}”.
   ->manifold.options
 
 = stern
-  The helm and various gauges, instruments, and controls are here, astern.
+  The helm and various gauges, instruments, and controls are here.
   + You a[A]pproach the helm.
     ->helm
   + You w[W]alk forward along the port rail.
@@ -137,9 +137,13 @@ In bold letters, the hull is paintèd “{~A|D|M}{$1~1000+1}”.
   - {<11 throttle}
     + You o[O]pen the throttle wide.
       {=11 throttle}
+    - {?throttle ^ (throttle < 10)}
+      + You p[P]ush the throttle one step more open.
+        {+throttle}
   - {?throttle}
-    + You p[P]ull the throttle one notch closed.
-      {-throttle}
+    - {>0 throttle}
+      + You p[P]ull the throttle one step toward closed.
+        {-throttle}
     + You p[P]ull the throttle fully closed.
       {=0 throttle}
   + “Steady as he goes].”[,” you say.
@@ -164,6 +168,16 @@ In bold letters, the hull is paintèd “{~A|D|M}{$1~1000+1}”.
       {=0 ballast.port}
   + You e[E]nter the boiler shed admiships.
     ->amidships
+  - {!plank}
+    + You h[H]aul the plank aboard.
+      {=1 plank}
+    - {?altitude}
+      + You w[W]alk the plank. <-
+    - {!altitude}
+      + You d[D]ebark by the boarding plank. <-
+  - {?plank}
+    + You h[H]aul the plank outboard.
+      {=0 plank}
   + You w[W]alk forward.
     ->forward
   + You w[W]alk astern.
@@ -397,7 +411,7 @@ In bold letters, the hull is paintèd “{~A|D|M}{$1~1000+1}”.
   {<0 altitude | {=0 altitude}}
 
   # TODO figure in up and down drafts
-  {= altitude.change/20 anemometer.vertical}
+  {= altitude.change/10 anemometer.vertical}
   {>0 anemometer.vertical
   | {=0 anemometer.vertical.direction}
   | {=1 anemometer.vertical.direction} {*0-1 anemometer.vertical}
