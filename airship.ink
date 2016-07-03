@@ -372,7 +372,7 @@ In bold letters, the hull is paintèd “{~A|D|M}{$1~1000+1}”.
   {/21 manifold.helium}
 
   {=
-    (manifold.helium / 10) -
+    (manifold.helium / 2) -
     (ballast.starboard * 50) -
     (ballast.port * 50) -
     bolier.water -
